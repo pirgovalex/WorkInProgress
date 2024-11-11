@@ -1,12 +1,15 @@
 import Library.LibraryModifier;
-
+import Library.PublicLibrary;
 
 
 public class Main {
     public static void main(String[] args) {
 
-        LibraryModifier libraryModifier = new LibraryModifier();
-        libraryModifier.addBookInput();
+        PublicLibrary library = new PublicLibrary();
+        LibraryModifier libraryModifier = new LibraryModifier(library);
+
+        libraryModifier.gatheringData();
+        libraryModifier.printBooks();
 
     }
 }

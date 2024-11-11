@@ -1,8 +1,7 @@
 package Library;
 import java.time.LocalDate;
 import java.util.List;
-
- class Book extends Library {
+class Book extends Library {
     private String title;
     private String genre;
     private String author;
@@ -22,7 +21,6 @@ import java.util.List;
                 int year, String isbn, int pageCount, String language, boolean isAvailable,
                 LocalDate borrowedDate, LocalDate returnDate, int borrowingPeriod,
                 int timesBorrowed) {
-
         super(libName, address, employeeCount, books);
         this.title = title;
         this.genre = genre;
@@ -38,44 +36,25 @@ import java.util.List;
         this.borrowingPeriod = borrowingPeriod;
         this.timesBorrowed = timesBorrowed;
         this.returnDate = calculateReturnDate();
-
     }
-
-    public Book(String title, String genre, String author,
-                String publisher, int year, String isbn, int pageCount,
-                String language, boolean isAvailable, LocalDate borrowedDate,
-                LocalDate returnDate, int borrowingPeriod, int timesBorrowed) {
-
-        this.title = title;
-        this.genre = genre;
-        this.author = author;
-        this.publisher = publisher;
-        this.year = year;
-        this.isbn = isbn;
-        this.pageCount = pageCount;
-        this.language = language;
-        this.isAvailable = isAvailable;
-        this.borrowedDate = borrowedDate;
-        this.returnDate = returnDate;
-        this.borrowingPeriod = borrowingPeriod;
-        this.timesBorrowed = timesBorrowed;
-        this.returnDate = calculateReturnDate();
-    }
-
 
     public Book() {
-
     }
 
     public String getTitle() {
-
         return title;
     }
 
     public void setTitle(String title) {
-        if (title.length() > 100 || title == null) {
-            throw new IllegalArgumentException("Invalid name!a");
-        } else this.title = title;
+        try {
+            if (title == null || title.length() > 100) {
+                throw new IllegalArgumentException("Invalid title!");
+            } else {
+                this.title = title;
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     public String getGenre() {
@@ -91,21 +70,31 @@ import java.util.List;
     }
 
     public void setAuthor(String author) {
-        if (author.length() > 100 || author == null) {
-            throw new IllegalArgumentException("Invalid author name!");
-        } else this.author = author;
+        try {
+            if (author == null || author.length() > 100) {
+                throw new IllegalArgumentException("Invalid author name!");
+            } else {
+                this.author = author;
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     public String getPublisher() {
-
         return publisher;
     }
 
     public void setPublisher(String publisher) {
-        if (publisher.length() > 50 || publisher.isEmpty()) {
-            throw new IllegalArgumentException("Invalid publisher!");
-        } else this.publisher = publisher;
-
+        try {
+            if (publisher == null || publisher.length() > 50 || publisher.isEmpty()) {
+                throw new IllegalArgumentException("Invalid publisher!");
+            } else {
+                this.publisher = publisher;
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     public int getYear() {
@@ -121,10 +110,15 @@ import java.util.List;
     }
 
     public void setIsbn(String isbn) {
-
-        if (isbn.length() > 10 || isbn.isEmpty()) {
-            throw new IllegalArgumentException("Invalid ISBN");
-        } else this.isbn = isbn;
+        try {
+            if (isbn == null || isbn.length() > 10 || isbn.isEmpty()) {
+                throw new IllegalArgumentException("Invalid ISBN");
+            } else {
+                this.isbn = isbn;
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     public int getPageCount() {
@@ -132,9 +126,15 @@ import java.util.List;
     }
 
     public void setPageCount(int pageCount) {
-        if (pageCount <= 0) {
-            throw new IllegalArgumentException("Pages cannot be empty or negative");
-        } else this.pageCount = pageCount;
+        try {
+            if (pageCount <= 0) {
+                throw new IllegalArgumentException("Pages cannot be empty or negative");
+            } else {
+                this.pageCount = pageCount;
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     public String getLanguage() {
@@ -159,7 +159,7 @@ import java.util.List;
 
     public void setBorrowedDate(LocalDate borrowedDate) {
         this.borrowedDate = borrowedDate;
-        this.returnDate = calculateReturnDate(); // Update
+        this.returnDate = calculateReturnDate(); // Update return date
     }
 
     public LocalDate getReturnDate() {
@@ -167,7 +167,7 @@ import java.util.List;
     }
 
     public void setReturnDate(LocalDate returnDate) {
-        this.returnDate =returnDate;
+        this.returnDate = returnDate;
     }
 
     public int getBorrowingPeriod() {
@@ -176,7 +176,7 @@ import java.util.List;
 
     public void setBorrowingPeriod(int borrowingPeriod) {
         this.borrowingPeriod = borrowingPeriod;
-        this.returnDate = calculateReturnDate(); // Update return date when borrowing period is set
+        this.returnDate = calculateReturnDate(); // Update return date
     }
 
     public int getTimesBorrowed() {
@@ -186,7 +186,6 @@ import java.util.List;
     public void setTimesBorrowed(int timesBorrowed) {
         this.timesBorrowed = timesBorrowed;
     }
-
 
     private LocalDate calculateReturnDate() {
         if (borrowedDate != null && borrowingPeriod > 0) {
@@ -198,7 +197,7 @@ import java.util.List;
     public void borrowBook(LocalDate borrowedDate, int borrowingPeriod) {
         setBorrowedDate(borrowedDate);
         setBorrowingPeriod(borrowingPeriod);
-        this.timesBorrowed++;
+        ++this.timesBorrowed;
         this.isAvailable = false;
     }
 }

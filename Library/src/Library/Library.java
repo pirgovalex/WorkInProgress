@@ -3,41 +3,55 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
 
-
 abstract class Library {
-
-
-
     private static String libName;
     private static String address;
     private static int employeeCount;
-    protected  static List<Book> books;
+    protected List<Book> books;
+    protected List<Library> libraries;
 
-
-    public Library(String libName,String address,int employeeCount,List<Book> books) {
-        setLibName(libName);
-
-        setAddress(address);
-
-        setEmployeeCount(employeeCount);
-
-        this.books=new ArrayList<>();
-
+    public Library(String libName, String address, int employeeCount, List<Book> books) {
     }
-    public Library(){
 
+    public List<Library> getLibraries() {
+        return libraries;
+    }
+
+    public void setLibraries(List<Library> libraries) {
+        this.libraries = libraries;
+    }
+
+    public Library(String libName, String address, int employeeCount, List<Book> books, List<Library> libraries) {
+        try {
+            setLibName(libName);
+            setAddress(address);
+            setEmployeeCount(employeeCount);
+            this.books = books != null ? books : new ArrayList<>();
+            this.libraries = libraries != null ? libraries : new ArrayList<>();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public Library() {
+        this.books = new ArrayList<>();
+        this.libraries = new ArrayList<>();
     }
 
     public static String getLibName() {
-
         return libName;
     }
 
     public static void setLibName(String libName) {
-        if(libName==null||libName.length()>100){
-            throw new IllegalArgumentException("Името на библиотеката е твъърде дълго или празно!");
+        try {
+            if (libName == null || libName.length() > 100) {
+                throw new IllegalArgumentException("The library name is too long or empty!");
+            } else {
+                Library.libName = libName;
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-        else Library.libName = libName;
     }
 
     public static String getAddress() {
@@ -45,9 +59,15 @@ abstract class Library {
     }
 
     public static void setAddress(String address) {
-        if(address==null||address.length()>500) throw new IllegalArgumentException("Адресът тр" +
-                "ябва да не е празен и да не е над 500 char!");
-        else Library.address = address;
+        try {
+            if (address == null || address.length() > 500) {
+                throw new IllegalArgumentException("The address cannot be empty and must be less than 500 characters!");
+            } else {
+                Library.address = address;
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     public static int getEmployeeCount() {
@@ -55,23 +75,30 @@ abstract class Library {
     }
 
     public static void setEmployeeCount(int employeeCount) {
-        if(employeeCount>50||employeeCount<0){
-            throw new IllegalArgumentException("Броят на работниците трябва да е между 50 и 0!");
+        try {
+            if (employeeCount > 50 || employeeCount <=1) {
+                throw new IllegalArgumentException("The number of employees must be between 0 and 50!");
+            } else {
+                Library.employeeCount = employeeCount;
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-        else Library.employeeCount = employeeCount;
     }
 
-    public static List<Book> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    public static void setBooks(List<Book> books) {
-        Library.books = books;
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
-    public void addBook(Book book){
-        books.add(book);
+    public void addBook(Book book) {
+
     }
 
+    public void printLibrary() {
+
+    }
 }
-
