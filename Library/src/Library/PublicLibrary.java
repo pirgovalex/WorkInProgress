@@ -22,7 +22,7 @@ public class PublicLibrary extends Library {
         }
     }
 
-    // Delete book by title
+
     public void deleteBookByTitle(String title) {
         Book desiredBook = searchBookByTitle(title);
         if (desiredBook != null && this.books.remove(desiredBook)) {
@@ -32,10 +32,18 @@ public class PublicLibrary extends Library {
         }
     }
 
-    // Search book by title
     public Book searchBookByTitle(String title) {
         for (Book book : books) {
             if (book.getTitle().equalsIgnoreCase(title)) {
+                return book;
+            }
+        }
+        System.out.println("Book not found!");
+        return null;
+    }
+    public Book searchBookByISBN(String title) {
+        for (Book book : books) {
+            if (book.getIsbn().equalsIgnoreCase(title)) {
                 return book;
             }
         }
@@ -55,7 +63,7 @@ public class PublicLibrary extends Library {
         String header = String.format("%-20s %-15s %-20s %-15s %-5s %-10s %-8s %-10s %-15s %-15s %-10s %-15s",
                 "Title", "Genre", "Author", "Publisher", "Year", "ISBN", "Pages", "Language", "Available", "Borrowed Date", "Return Date", "Times Borrowed");
         System.out.println(header);
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------");
 
         // Details as a string & collect into a single output
         String table = books.stream()
@@ -74,7 +82,7 @@ public class PublicLibrary extends Library {
                         book.getTimesBorrowed()
                 ))
                 .collect(Collectors.joining("\n"));
-//fix times borroweeeed
+
         System.out.println(table);
     }
 

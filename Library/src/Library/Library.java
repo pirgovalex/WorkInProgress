@@ -10,7 +10,7 @@ abstract class Library {
     protected List<Book> books;
     protected List<Library> libraries;
 
-    public Library(String libName, String address, int employeeCount, List<Book> books) {
+     Library(String libName, String address, int employeeCount, List<Book> books) {//package private
     }
 
     public List<Library> getLibraries() {
@@ -33,7 +33,7 @@ abstract class Library {
         }
     }
 
-    public Library() {
+     Library() {
         this.books = new ArrayList<>();
         this.libraries = new ArrayList<>();
     }

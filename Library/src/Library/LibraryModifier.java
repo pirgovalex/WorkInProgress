@@ -11,7 +11,7 @@ public class LibraryModifier {
         this.Plibrary = Plibrary;
     }
 
-    // Display main menu and handle user actions
+    // print menu and user actions
     public void displayMenu() {
         boolean isRunning = true;
         while (isRunning) {
@@ -19,16 +19,18 @@ public class LibraryModifier {
             System.out.println("1. Add Library Information");
             System.out.println("2. Add Book to Library");
             System.out.println("3. Search Book by Title");
+            System.out.println("31 Search Book by Title");
             System.out.println("4. Remove Book from Library");
             System.out.println("5. Update Book in Library");
             System.out.println("6. Display All Books");
             System.out.println("7. Exit");
 
             int choice = Integer.parseInt(sc.nextLine());
-            switch (choice) {//moderen switch! kazahte che go predpochitate
+            switch ( choice) {//moderen switch! kazahte che go predpochitate
                 case 1 -> addLibraryInfo();
                 case 2 -> addBookInput();
                 case 3 -> searchBookInput();
+                case 31 -> searchBookInputISBN();//razbrah postfaktum za tozi detail
                 case 4 -> deleteBookInput();
                 case 5 -> updateBookInput();
                 case 6 -> displayAllBooks();
@@ -106,6 +108,13 @@ public class LibraryModifier {
             System.out.println("Book found: " + foundBook.getTitle());
         }
     }
+    public void searchBookInputISBN() {
+        System.out.println("Enter title of the book to search via ISBN: ");
+        Book foundBook = Plibrary.searchBookByISBN(sc.nextLine());
+        if (foundBook != null) {
+            System.out.println("Book found via isbn!: " + foundBook.getTitle());
+        }
+    }
 
     // Delete a book by title
     public void deleteBookInput() {
@@ -127,7 +136,7 @@ public class LibraryModifier {
             System.out.println("Enter new publisher: ");
             bookToUpdate.setPublisher(sc.nextLine());
 
-            // Requesting the year from the user and validating if it's an integer
+
             System.out.println("Enter new year: ");
             while (!sc.hasNextInt()) {
                 System.out.println("Invalid input. Please enter a valid year: ");
@@ -142,7 +151,7 @@ public class LibraryModifier {
         }
     }
 
-    // Display all books in the library
+    //  printer koito go murzi i vika priqtel
     public void displayAllBooks() {
         System.out.println("\nLibrary Books:");
         Plibrary.listAllBooks();

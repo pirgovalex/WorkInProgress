@@ -1,7 +1,7 @@
 package Library;
 import java.time.LocalDate;
 import java.util.List;
-class Book extends Library {
+class Book extends Library {//poleta
     private String title;
     private String genre;
     private String author;
@@ -16,7 +16,7 @@ class Book extends Library {
     private int borrowingPeriod;
     private int timesBorrowed;
 
-    public Book(String libName, String address, int employeeCount,
+     Book(String libName, String address, int employeeCount,
                 List<Book> books, String title, String genre, String author, String publisher,
                 int year, String isbn, int pageCount, String language, boolean isAvailable,
                 LocalDate borrowedDate, LocalDate returnDate, int borrowingPeriod,
@@ -38,7 +38,7 @@ class Book extends Library {
         this.returnDate = calculateReturnDate();
     }
 
-    public Book() {
+     Book() {
     }
 
     public String getTitle() { return title; }
