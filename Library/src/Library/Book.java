@@ -41,151 +41,45 @@ class Book extends Library {
     public Book() {
     }
 
-    public String getTitle() {
-        return title;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 
-    public void setTitle(String title) {
-        try {
-            if (title == null || title.length() > 100) {
-                throw new IllegalArgumentException("Invalid title!");
-            } else {
-                this.title = title;
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
+    public String getGenre() { return genre; }
+    public void setGenre(String genre) { this.genre = genre; }
 
-    public String getGenre() {
-        return genre;
-    }
+    public String getAuthor() { return author; }
+    public void setAuthor(String author) { this.author = author; }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
+    public String getPublisher() { return publisher; }
+    public void setPublisher(String publisher) { this.publisher = publisher; }
 
-    public String getAuthor() {
-        return author;
-    }
+    public int getYear() { return year; }
+    public void setYear(int year) { this.year = year; }
 
-    public void setAuthor(String author) {
-        try {
-            if (author == null || author.length() > 100) {
-                throw new IllegalArgumentException("Invalid author name!");
-            } else {
-                this.author = author;
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
+    public String getIsbn() { return isbn; }
+    public void setIsbn(String isbn) { this.isbn = isbn; }
 
-    public String getPublisher() {
-        return publisher;
-    }
+    public int getPageCount() { return pageCount; }
+    public void setPageCount(int pageCount) { this.pageCount = pageCount; }
 
-    public void setPublisher(String publisher) {
-        try {
-            if (publisher == null || publisher.length() > 50 || publisher.isEmpty()) {
-                throw new IllegalArgumentException("Invalid publisher!");
-            } else {
-                this.publisher = publisher;
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
+    public String getLanguage() { return language; }
+    public void setLanguage(String language) { this.language = language; }
 
-    public int getYear() {
-        return year;
-    }
+    public boolean isAvailable() { return isAvailable; }
+    public void setAvailable(boolean available) { isAvailable = available; }
 
-    public void setYear(int year) {
-        this.year = year;
-    }
+    public LocalDate getBorrowedDate() { return borrowedDate; }
+    public void setBorrowedDate(LocalDate borrowedDate) { this.borrowedDate = borrowedDate; }
 
-    public String getIsbn() {
-        return isbn;
+    public int getBorrowingPeriod() { return borrowingPeriod; }
+    public void setBorrowingPeriod(int borrowingPeriod) { this.borrowingPeriod = borrowingPeriod; }
+    public LocalDate getReturnDate(){
+        return calculateReturnDate();
     }
-
-    public void setIsbn(String isbn) {
-        try {
-            if (isbn == null || isbn.length() > 10 || isbn.isEmpty()) {
-                throw new IllegalArgumentException("Invalid ISBN");
-            } else {
-                this.isbn = isbn;
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
-
-    public int getPageCount() {
-        return pageCount;
-    }
-
-    public void setPageCount(int pageCount) {
-        try {
-            if (pageCount <= 0) {
-                throw new IllegalArgumentException("Pages cannot be empty or negative");
-            } else {
-                this.pageCount = pageCount;
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public boolean isAvailable() {
-        return isAvailable;
-    }
-
-    public void setAvailable(boolean available) {
-        isAvailable = available;
-    }
-
-    public LocalDate getBorrowedDate() {
-        return borrowedDate;
-    }
-
-    public void setBorrowedDate(LocalDate borrowedDate) {
-        this.borrowedDate = borrowedDate;
-        this.returnDate = calculateReturnDate(); // Update return date
-    }
-
-    public LocalDate getReturnDate() {
-        return returnDate;
-    }
-
-    public void setReturnDate(LocalDate returnDate) {
-        this.returnDate = returnDate;
-    }
-
-    public int getBorrowingPeriod() {
-        return borrowingPeriod;
-    }
-
-    public void setBorrowingPeriod(int borrowingPeriod) {
-        this.borrowingPeriod = borrowingPeriod;
-        this.returnDate = calculateReturnDate(); // Update return date
-    }
-
-    public int getTimesBorrowed() {
+    public int getTimesBorrowed(){
         return timesBorrowed;
     }
 
-    public void setTimesBorrowed(int timesBorrowed) {
-        this.timesBorrowed = timesBorrowed;
-    }
 
     private LocalDate calculateReturnDate() {
         if (borrowedDate != null && borrowingPeriod > 0) {
@@ -194,10 +88,8 @@ class Book extends Library {
         return null;
     }
 
-    public void borrowBook(LocalDate borrowedDate, int borrowingPeriod) {
-        setBorrowedDate(borrowedDate);
-        setBorrowingPeriod(borrowingPeriod);
+    public void setBorrowBook() {
         ++this.timesBorrowed;
-        this.isAvailable = false;
     }
+//book bookbbok blqblqblq
 }

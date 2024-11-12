@@ -42,8 +42,8 @@ abstract class Library {
         return libName;
     }
 
-    public static void setLibName(String libName) {
-        try {
+    public static void setLibName(String libName) {Library.libName = libName;}
+     /*   try {
             if (libName == null || libName.length() > 100) {
                 throw new IllegalArgumentException("The library name is too long or empty!");
             } else {
@@ -52,22 +52,23 @@ abstract class Library {
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }
-    }
+    }*/
 
     public static String getAddress() {
         return address;
     }
 
-    public static void setAddress(String address) {
-        try {
+    public static void setAddress(String address) { Library.address = address;
+        /*try {
             if (address == null || address.length() > 500) {
                 throw new IllegalArgumentException("The address cannot be empty and must be less than 500 characters!");
             } else {
                 Library.address = address;
-            }
+            }ostavqm tezi komentari za da pokaja general ideata mi predi tozi kod koito pushvam rn
+
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
-        }
+        }*/
     }
 
     public static int getEmployeeCount() {
@@ -75,15 +76,16 @@ abstract class Library {
     }
 
     public static void setEmployeeCount(int employeeCount) {
-        try {
-            if (employeeCount > 50 || employeeCount <=1) {
+        Library.employeeCount = employeeCount;
+       /* try {
+            if (employeeCount > 50 || employeeCount <1) {
                 throw new IllegalArgumentException("The number of employees must be between 0 and 50!");
             } else {
                 Library.employeeCount = employeeCount;
             }
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
-        }
+        }*/
     }
 
     public List<Book> getBooks() {
