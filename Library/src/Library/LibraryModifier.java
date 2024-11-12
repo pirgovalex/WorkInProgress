@@ -116,7 +116,7 @@ public class LibraryModifier {
     // Update book details
     public void updateBookInput() {
         System.out.println("Enter title of the book to update: ");
-        Book bookToUpdate = Plibrary.searchBookByTitle(sc.nextLine());
+        Book bookToUpdate = Plibrary.searchBookByTitle(sc.nextLine()); // Assuming this method exists to search by title
         if (bookToUpdate != null) {
             System.out.println("Enter new genre: ");
             bookToUpdate.setGenre(sc.nextLine());
@@ -127,7 +127,18 @@ public class LibraryModifier {
             System.out.println("Enter new publisher: ");
             bookToUpdate.setPublisher(sc.nextLine());
 
+            // Requesting the year from the user and validating if it's an integer
+            System.out.println("Enter new year: ");
+            while (!sc.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a valid year: ");
+                sc.next(); // clear the invalid input
+            }
+            int newYear = sc.nextInt();
+            bookToUpdate.setYear(newYear);
+
             System.out.println("Book updated successfully.");
+        } else {
+            System.out.println("Book not found.");
         }
     }
 

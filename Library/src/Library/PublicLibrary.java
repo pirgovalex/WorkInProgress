@@ -52,14 +52,14 @@ public class PublicLibrary extends Library {
         }
 
         // a header
-        String header = String.format("%-20s %-15s %-20s %-15s %-5s %-10s %-8s %-10s %-15s %-15s %-10s",
-                "Title", "Genre", "Author", "Publisher", "Year", "ISBN", "Pages", "Language", "Available", "Borrowed Date", "Times Borrowed");
+        String header = String.format("%-20s %-15s %-20s %-15s %-5s %-10s %-8s %-10s %-15s %-15s %-10s %-15s",
+                "Title", "Genre", "Author", "Publisher", "Year", "ISBN", "Pages", "Language", "Available", "Borrowed Date", "Return Date", "Times Borrowed");
         System.out.println(header);
-        System.out.println("---------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
 
-        // Fdetails as a string & collect into a single outputt
+        // Details as a string & collect into a single output
         String table = books.stream()
-                .map(book -> String.format("%-20s %-15s %-20s %-15s %-5d %-10s %-8d %-10s %-15s %-15s %-10d",
+                .map(book -> String.format("%-20s %-15s %-20s %-15s %-5d %-10s %-8d %-10s %-15s %-15s %-10s %-15s",
                         book.getTitle(),
                         book.getGenre(),
                         book.getAuthor(),
@@ -70,12 +70,14 @@ public class PublicLibrary extends Library {
                         book.getLanguage(),
                         (book.isAvailable() ? "Yes" : "No"),
                         (book.getBorrowedDate() != null ? book.getBorrowedDate().toString() : "N/A"),
+                        (book.getReturnDate() != null ? book.getReturnDate().toString() : "N/A"),  // Show returnDate
                         book.getTimesBorrowed()
                 ))
                 .collect(Collectors.joining("\n"));
-//reminder da si opravq times borrowed utre
+//fix times borroweeeed
         System.out.println(table);
     }
+
 
     @Override
     public void printLibrary() {
