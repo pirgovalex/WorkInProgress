@@ -16,7 +16,7 @@ class Book extends Library {//poleta
     private int borrowingPeriod;
     private int timesBorrowed;
 
-     Book(String libName, String address, int employeeCount,
+    /* Book(String libName, String address, int employeeCount,
                 List<Book> books, String title, String genre, String author, String publisher,
                 int year, String isbn, int pageCount, String language, boolean isAvailable,
                 LocalDate borrowedDate, LocalDate returnDate, int borrowingPeriod,
@@ -26,7 +26,7 @@ class Book extends Library {//poleta
         this.genre = genre;
         this.author = author;
         this.publisher = publisher;
-        this.year = year;
+        this.year = year;                        razmislih
         this.isbn = isbn;
         this.pageCount = pageCount;
         this.language = language;
@@ -36,7 +36,7 @@ class Book extends Library {//poleta
         this.borrowingPeriod = borrowingPeriod;
         this.timesBorrowed = timesBorrowed;
         this.returnDate = calculateReturnDate();
-    }
+    }*/
 
      Book() {
     }
@@ -91,5 +91,5 @@ class Book extends Library {//poleta
     public void setBorrowBook() {
         ++this.timesBorrowed;
     }
-//book bookbbok blqblqblq
+
 }
