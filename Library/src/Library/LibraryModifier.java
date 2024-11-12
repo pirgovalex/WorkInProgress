@@ -19,8 +19,9 @@ public class LibraryModifier {
             System.out.println("1. Add Library Information");
             System.out.println("2. Add Book to Library");
             System.out.println("3. Search Book by Title");
-            System.out.println("31 Search Book by Title");
+            System.out.println("31. Search Book by ISBN");
             System.out.println("4. Remove Book from Library");
+            System.out.println("41. Remove Book from Library via ISBN");
             System.out.println("5. Update Book in Library");
             System.out.println("6. Display All Books");
             System.out.println("7. Exit");
@@ -32,6 +33,7 @@ public class LibraryModifier {
                 case 3 -> searchBookInput();
                 case 31 -> searchBookInputISBN();//razbrah postfaktum za tozi detail
                 case 4 -> deleteBookInput();
+                case 41 -> deleteBookISBN();
                 case 5 -> updateBookInput();
                 case 6 -> displayAllBooks();
                 case 7 -> {
@@ -120,6 +122,10 @@ public class LibraryModifier {
     public void deleteBookInput() {
         System.out.println("Enter title of the book to delete: ");
         Plibrary.deleteBookByTitle(sc.nextLine());
+    }
+    public void deleteBookISBN(){
+        System.out.println("Enter title of the book to delete via ISBN: ");
+        Plibrary.deleteBookInputISBN(sc.nextLine());
     }
 
     // Update book details

@@ -50,6 +50,17 @@ public class PublicLibrary extends Library {
         System.out.println("Book not found!");
         return null;
     }
+    public Book deleteBookInputISBN(String ISBN){
+       Book desiredBook= searchBookByISBN(ISBN);
+        if (desiredBook != null && this.books.remove(desiredBook)) {
+            System.out.println("Book deleted successfully.");
+            return desiredBook;
+        }
+        else {
+            System.out.println("Book not found or could not be deleted.");
+            return null;
+        }
+    }
 
 
     //OBICHAM STREAMING I KOLEKTORIIII!!!!!!!!!
